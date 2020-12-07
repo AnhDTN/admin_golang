@@ -6,7 +6,7 @@ import (
 )
 
 type BaseModel struct {
-	Id         string `json:"id,omitempty" bson:"id,omitempty"`
+	Id string `json:"id,omitempty" bson:"id,omitempty"`
 	CreateTime string `json:"create_time,omitempty" bson:"create_time,omitempty"`
 	UpdateTime string `json:"update_time,omitempty" bson:"update_time,omitempty"`
 }
