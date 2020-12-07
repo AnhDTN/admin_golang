@@ -3,6 +3,7 @@ package impl
 import (
 	"admin_golang/dbs"
 	"admin_golang/models"
+	"admin_golang/repo"
 	"admin_golang/schema"
 	"context"
 	"encoding/json"
@@ -23,7 +24,7 @@ type RoleRepo struct {
 	collection *mongo.Collection
 }
 
-func NewRoleRepository() *RoleRepo {
+func NewRoleRepository() repo.RoleRepository {
 	return &RoleRepo{collection: dbs.Database.Collection(roleCollection)}
 }
 

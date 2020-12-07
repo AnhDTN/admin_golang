@@ -15,18 +15,18 @@ type tokenInfo struct {
 	TokenType    string `json:"token_type"`
 }
 
-func (t tokenInfo) GetAccessToken() string {
+func (t *tokenInfo) GetAccessToken() string {
 	return t.AccessToken
 }
 
-func (t tokenInfo) GetRefreshToken() string {
+func (t *tokenInfo) GetRefreshToken() string {
 	return t.RefreshToken
 }
 
-func (t tokenInfo) GetTokenType() string {
+func (t *tokenInfo) GetTokenType() string {
 	return t.TokenType
 }
 
-func (t tokenInfo) EncodeToJSON() ([]byte, error) {
+func (t *tokenInfo) EncodeToJSON() ([]byte, error) {
 	return json.Marshal(t)
 }

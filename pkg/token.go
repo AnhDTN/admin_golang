@@ -7,9 +7,9 @@ import (
 )
 
 func HashAndSalt(pass []byte) string {
-	hashed, err := bcrypt.Cost(pass)
+	hashed, err := bcrypt.GenerateFromPassword(pass, bcrypt.MinCost)
 	if err != nil {
-		log.Print("Bcrypt pass error: ", err)
+		log.Print("Bcrypt pass error_custom: ", err)
 		return ""
 	}
 	return string(hashed)
