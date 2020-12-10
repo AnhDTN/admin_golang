@@ -12,11 +12,11 @@ import (
 
 type AuthService struct {
 	jwt      jwt.JWTAuth
-	userRepo repo.UserRepository
-	roleRepo repo.RoleRepository
+	userRepo repo.IUserRepository
+	roleRepo repo.IRoleRepository
 }
 
-func NewAuthService(jwt jwt.JWTAuth, userRepo repo.UserRepository, roleRepo repo.RoleRepository) services.IAuthService {
+func NewAuthService(jwt jwt.JWTAuth, userRepo repo.IUserRepository, roleRepo repo.IRoleRepository) services.IAuthService {
 	return &AuthService{jwt: jwt, userRepo: userRepo, roleRepo: roleRepo}
 }
 

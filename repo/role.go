@@ -5,7 +5,7 @@ import (
 	"admin_golang/schema"
 )
 
-type RoleRepository interface {
+type IRoleRepository interface {
 	CreateRole(role *schema.RoleBodyParam) (*models.Role, error)
 	DeleteRole(role *schema.DeleteBodyParam) error
 	UpdateRole(role *schema.Role) error

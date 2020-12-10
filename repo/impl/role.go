@@ -24,7 +24,7 @@ type RoleRepo struct {
 	collection *mongo.Collection
 }
 
-func NewRoleRepository() repo.RoleRepository {
+func NewRoleRepository() repo.IRoleRepository {
 	return &RoleRepo{collection: dbs.Database.Collection(roleCollection)}
 }
 

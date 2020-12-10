@@ -30,8 +30,10 @@ func Translate(c *gin.Context, response models.ResponseData) {
 		result[MessageField] = customError.Error()
 		result[CodeField] = customError.Type()
 	} else {
-		result[MessageField] = response.Error.Error()
-		result[CodeField] = -1
+		if response.Error != nil {
+			result[MessageField] = response.Error.Error()
+			result[CodeField] = -1
+		}
 	}
 
 	result[DataField] = response.Data

@@ -29,7 +29,7 @@ type AdminRepo struct {
 	collection *mongo.Collection
 }
 
-func NewAdminRepository() repo.UserRepository {
+func NewAdminRepository() repo.IUserRepository {
 	return &AdminRepo{collection: dbs.Database.Collection(adminCollection)}
 }
 

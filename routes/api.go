@@ -12,14 +12,26 @@ import (
 func CreateApi(engine *gin.Engine, container *dig.Container) error {
 	err := container.Invoke(
 		func(jwt jwt.JWTAuth,
-			auth *handler.Auth) error {
+			auth *handler.Auth,
+			user *handler.User) error {
+			versionApi := engine.Group("/api/v1")
+			authentic := versionApi.Group("/auth")
 			{
-				engine.POST("/login", httpResponse.Wrap(auth.Login))
-				engine.POST("/register", httpResponse.Wrap(auth.Register))
-				engine.POST("/token/refresh", httpResponse.Wrap(auth.Refresh))
-				engine.POST("/logout", httpResponse.Wrap(auth.LogOut))
+				authentic.POST("/login", httpResponse.Wrap(auth.Login))
+				authentic.POST("/register", httpResponse.Wrap(auth.Register))
+				authentic.POST("/token/refresh", httpResponse.Wrap(auth.Refresh))
+				authentic.POST("/logout", httpResponse.Wrap(auth.LogOut))
 			}
-			engine.Group("/admin")
+
+			// U can save map[string]interface account
+			internal := versionApi.Group("/internal", gin.BasicAuth(gin.Accounts{
+				"NamAnh":     "123",
+				"NamAnh123":  "123",
+				"NamAnh1234": "123",
+			}))
+			{
+				internal.GET("/users", httpResponse.Wrap(user.GetAllUser))
+			}
 			return nil
 		},
 	)

@@ -5,7 +5,7 @@ import (
 	"admin_golang/schema"
 )
 
-type UserRepository interface {
+type IUserRepository interface {
 	Login(body *schema.LoginBodyParam) (*models.User, error)
 	CreateUser(admin *schema.RegisterBodyParam) (*models.User, error)
 	DeleteUser(admin *schema.UserIdParam) error
